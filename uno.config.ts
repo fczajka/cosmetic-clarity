@@ -1,13 +1,14 @@
 // uno.config.ts
 import {
-    defineConfig,
-    presetUno,
-    presetAttributify,
-    presetWebFonts,
-    presetIcons,
-  } from "unocss";
+  defineConfig,
+  presetUno,
+  presetAttributify,
+  presetWebFonts,
+  presetIcons,
+} from "unocss";
 
-export default defineConfig({presets: [
+export default defineConfig({
+  presets: [
     presetUno(),
     presetAttributify({
       prefix: "un-",
@@ -38,4 +39,4 @@ export default defineConfig({presets: [
       },
     }),
   ],
-})
+});

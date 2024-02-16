@@ -1,8 +1,5 @@
 function App() {
-
-  return (
-      <div>Cosmetic Clarity</div>
-  )
+  return <div>Cosmetic Clarity</div>;
 }
 
-export default App
+export default App;
