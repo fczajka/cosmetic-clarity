@@ -2,17 +2,54 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "uno.config.ts", "vite.config.ts"],
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ["./tsconfig.json"],
+    ecmaVersion: 2020,
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  plugins: ["react-refresh", "@typescript-eslint"],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
+    "react-refresh/only-export-components": [
+      "warn",
       { allowConstantExport: true },
     ],
+    "no-console": "warn",
+    "prefer-spread": "warn",
+    "require-await": "warn",
+    "no-useless-catch": "warn",
+    "consistent-return": "warn",
+    "no-case-declarations": "off",
+    "jsx-quotes": ["off", "prefer-double"],
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/ban-types": "error",
+    "@typescript-eslint/no-namespace": "error",
+    "@typescript-eslint/no-this-alias": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/ban-ts-comment": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-empty-function": "error",
+    "@typescript-eslint/no-empty-interface": "warn",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/consistent-type-imports": "warn",
+    "@typescript-eslint/no-unnecessary-condition": "warn",
   },
-}
+  overrides: [
+    {
+      files: ["*.ts"],
+      rules: {
+        "@typescript-eslint/explicit-module-boundary-types": "warn",
+      },
+    },
+  ],
+};
