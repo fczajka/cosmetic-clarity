@@ -9,4 +9,4 @@ export interface Result {
   origin: string | null;
 }
 
-export type ResultArray = (Result | string)[];
+export type ResultsArray = (Result | string)[];

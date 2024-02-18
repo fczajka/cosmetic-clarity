@@ -1,17 +1,17 @@
 import { useState, type FormEvent, type ChangeEvent } from "react";
 import { Layout, Results } from "./components";
-import type { ResultArray } from "./interfaces";
+import type { ResultsArray } from "./interfaces";
 import { findData } from "./helpers";
 
 export default function App() {
   const [ingridients, setIngridients] = useState<string>("");
-  const [result, setResult] = useState<ResultArray>([]);
+  const [results, setResults] = useState<ResultsArray>([]);
   const [height, setHeight] = useState("auto");
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const result = findData(ingridients);
-    setResult(result);
+    setResults(result);
   }
 
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -27,10 +27,11 @@ export default function App() {
           onChange={handleChange}
           value={ingridients}
           style={{ height }}
+          className="resize-none"
         />
         <button type="submit">Check</button>
       </form>
-      {result.length > 0 && <Results result={result} />}
+      {results.length > 0 && <Results results={results} />}
     </Layout>
   );
 }

@@ -1,7 +1,7 @@
-import type { ResultArray } from "./interfaces";
+import type { ResultsArray } from "./interfaces";
 import Data from "./public/data.json";
 
-export function findData(ingridients: string): ResultArray | [] {
+export function findData(ingridients: string): ResultsArray | [] {
   const ingridientsArr = ingridients.split(",");
   const trimmedIngridients = ingridientsArr.map((ingridient) =>
     ingridient.trim().replace(".", ""),

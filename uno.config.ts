@@ -39,4 +39,7 @@ export default defineConfig({
       },
     }),
   ],
+  shortcuts: {
+    "flex-center": "items-center justify-center",
+  },
 });
