@@ -1,7 +1,7 @@
 import type { ResultArray } from "./interfaces";
 import Data from "./public/data.json";
 
-export function findData(ingridients: string): ResultArray {
+export function findData(ingridients: string): ResultArray | [] {
   const ingridientsArr = ingridients.split(",");
   const trimmedIngridients = ingridientsArr.map((ingridient) =>
     ingridient.trim().replace(".", ""),
@@ -28,6 +28,8 @@ export function findData(ingridients: string): ResultArray {
   //   });
   //   return matchingIngridients;
   // });
+
+  if (!result.length || result[0] == "") return [];
 
   return result;
 }

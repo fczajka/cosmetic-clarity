@@ -1,5 +1,5 @@
 import { useState, type FormEvent, type ChangeEvent } from "react";
-import { Layout } from "./components";
+import { Layout, Results } from "./components";
 import type { ResultArray } from "./interfaces";
 import { findData } from "./helpers";
 
@@ -30,6 +30,7 @@ export default function App() {
         />
         <button type="submit">Check</button>
       </form>
+      {result.length > 0 && <Results result={result} />}
     </Layout>
   );
 }

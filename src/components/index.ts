@@ -1,3 +1,4 @@
 import Layout from "./Layout";
+import Results from "./Results";
 
-export { Layout };
+export { Layout, Results };
