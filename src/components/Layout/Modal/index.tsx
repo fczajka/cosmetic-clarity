@@ -43,7 +43,11 @@ export default function Modal({ data, setIsOpen }: ResultProps) {
             headline="Grupy funkcyjne:"
             data={functional_groups}
           />
-          <List inRow="basis-1/2" headline="Alergiczność:" data={allergens} />
+          <Paragraph
+            inRow="basis-1/2"
+            headline="Alergiczność:"
+            data={allergens}
+          />
         </div>
         <Paragraph headline="Funkcja w produkcie:" data={function_in_product} />
         <List headline="Bezpieczeństwo:" data={safety_info} />
