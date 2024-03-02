@@ -1,6 +1,6 @@
 import { useState } from "react";
-import type { Result, ResultsArray } from "../../interfaces";
-import Modal from "../Layout/Modal/index";
+import type { Result, ResultsArray } from "../../../interfaces";
+import Modal from "../Modal";
 
 export default function Results(props: { results: ResultsArray }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);

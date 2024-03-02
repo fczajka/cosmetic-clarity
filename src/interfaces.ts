@@ -4,7 +4,7 @@ export interface Result {
   function_in_product: string | null;
   action: string | null;
   safety_info: string[] | null;
-  allergens: string[] | null;
+  allergens: string | null;
   environment_impact: string | null;
   origin: string | null;
 }
