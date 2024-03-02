@@ -22,14 +22,19 @@ export default function App() {
   };
   return (
     <Layout>
-      <form onSubmit={handleSubmit}>
+      <div className="font-headline text-xl lg:text-2xl">
+        Enter the ingredient list here:
+      </div>
+      <form onSubmit={handleSubmit} un-flex="~ col">
         <textarea
           onChange={handleChange}
           value={ingridients}
           style={{ height }}
-          className="resize-none"
+          className="resize-none px-4 py-2 my-2 bg-slate-200 rounded-xl"
         />
-        <button type="submit">Check</button>
+        <button className="p-2 my-2 bg-slate-200 rounded-xl" type="submit">
+          Check
+        </button>
       </form>
       {results.length > 0 && <Results results={results} />}
     </Layout>

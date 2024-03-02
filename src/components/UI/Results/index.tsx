@@ -13,14 +13,22 @@ export default function Results(props: { results: ResultsArray }) {
 
   return (
     <>
-      <ul className="w-full h-screen">
+      <ul className="w-full">
         {props.results.map((ingredient) => (
           <>
             {typeof ingredient === "string" ? (
-              <li key={ingredient}>{ingredient}</li>
+              <li
+                className="text-center my-1 px-4 py-2 rounded-xl bg-slate-200 opacity-50"
+                key={ingredient}
+              >
+                {ingredient}
+              </li>
             ) : (
-              <li key={ingredient.title}>
-                <button onClick={() => handleClick(ingredient)}>
+              <li className="my-1" key={ingredient.title}>
+                <button
+                  className="block w-full h-full px-4 py-2 rounded-xl bg-slate-200"
+                  onClick={() => handleClick(ingredient)}
+                >
                   {ingredient.title}
                 </button>
               </li>
