@@ -7,8 +7,12 @@ export function findData(ingridients: string): ResultsArray | [] {
     ingridient.trim().replace(".", ""),
   );
 
+  const trimmedIngredientsToLowerCase = trimmedIngridients.map((ingridient) =>
+    ingridient.toLowerCase(),
+  );
+
   const matchingIngridients = Data.filter((item) => {
-    return trimmedIngridients.includes(item.title);
+    return trimmedIngredientsToLowerCase.includes(item.title.toLowerCase());
   });
 
   const result = trimmedIngridients.map((ingridient) => {
