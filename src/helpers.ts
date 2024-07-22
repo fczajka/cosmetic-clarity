@@ -25,14 +25,6 @@ export function findData(ingridients: string): ResultsArray | [] {
     return foundItem;
   });
 
-  // CODE FOR NOT USING EXACT MATCH
-  // const result = trimmedIngridients.map((ingridient) => {
-  //   const matchingIngridients = Data.filter((item) => {
-  //     return item.title.toLowerCase().includes(ingridient);
-  //   });
-  //   return matchingIngridients;
-  // });
-
   if (!result.length || result[0] == "") return [];
 
   return result;

@@ -19,9 +19,10 @@ export default function Modal({ data, setIsOpen }: ResultProps) {
   } = data;
 
   const handleClose = (event: MouseEvent<HTMLDivElement>) => {
-    if (elRef.current && elRef.current.contains(event.target as Node)) return;
-    if (elRef.current && elRef.current.contains(event.target as HTMLDivElement))
-      setIsOpen(false);
+    if (!elRef.current) return;
+    if (elRef.current.contains(event.target as Node)) return;
+    if (isDetailOpen) return;
+    setIsOpen(false);
   };
 
   return (
@@ -31,6 +32,7 @@ export default function Modal({ data, setIsOpen }: ResultProps) {
       onClick={handleClose}
     >
       <div
+        id="details"
         ref={elRef}
         className="relative w-3xl p-6 bg-slate-50 rounded-3xl z-10"
       >
@@ -53,6 +55,7 @@ export default function Modal({ data, setIsOpen }: ResultProps) {
       </div>
       {isDetailOpen && (
         <IngredientDetails
+          setIsDetailOpen={setIsDetailOpen}
           functionalGroups={functional_groups}
           allergens={allergens}
           environmentImpact={environment_impact}
