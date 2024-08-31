@@ -51,7 +51,7 @@ export default function Video() {
         const response = await fetch("https://api.ocr.space/parse/image", {
           method: "POST",
           headers: {
-            apikey: import.meta.env.VITE_API_KEY,
+            apikey: import.meta.env.VITE_APP_API_KEY,
           },
           body: formData,
         });
