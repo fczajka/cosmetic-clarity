@@ -9,7 +9,9 @@ export default function Video() {
   useEffect(() => {
     const getVideo = async () => {
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
+        video: {
+          facingMode: { exact: "environment" },
+        },
       });
       setStream(stream);
       if (videoRef.current) {
