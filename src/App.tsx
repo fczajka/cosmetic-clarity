@@ -2,6 +2,7 @@ import { useState, type FormEvent, type ChangeEvent } from "react";
 import { Layout, Results } from "./components";
 import type { ResultsArray } from "./interfaces";
 import { findData } from "./helpers";
+import Video from "./Video";
 
 export default function App() {
   const [ingridients, setIngridients] = useState<string>("");
@@ -36,6 +37,7 @@ export default function App() {
           Check
         </button>
       </form>
+      <Video />
       {results.length > 0 && <Results results={results} />}
     </Layout>
   );
