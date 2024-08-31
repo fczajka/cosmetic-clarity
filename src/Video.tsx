@@ -30,6 +30,7 @@ export default function Video() {
   }, []);
 
   const captureImage = () => {
+    alert(import.meta.env.VITE_APP_API_KEY);
     if (!canvasRef.current) return;
     if (!videoRef.current) return;
 
@@ -43,10 +44,12 @@ export default function Video() {
 
     canvas.toBlob(async (blob) => {
       if (blob) {
+        alert("under blob");
         const formData = new FormData();
         formData.append("language", "eng");
         formData.append("file", blob, "image.png");
         formData.append("filetype", "png");
+        alert("under data");
 
         const response = await fetch("https://api.ocr.space/parse/image", {
           method: "POST",
@@ -56,11 +59,14 @@ export default function Video() {
           body: formData,
         });
 
+        alert("under response");
+
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
         }
 
         const result = await response.json();
+        alert(result);
 
         setDetectedText(
           result.ParsedResults[0]?.ParsedText || "No text detected",
