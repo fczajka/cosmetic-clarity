@@ -6,19 +6,17 @@ export default function Video() {
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [detectedText, setDetectedText] = useState<string | null>(null);
 
-  useEffect(() => {
-    const getVideo = async () => {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: {
-          facingMode: { exact: "environment" },
-        },
-      });
-      setStream(stream);
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-      }
-    };
+  const getVideo = async () => {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+    });
+    setStream(stream);
+    if (videoRef.current) {
+      videoRef.current.srcObject = stream;
+    }
+  };
 
+  useEffect(() => {
     getVideo();
 
     return () => {
@@ -69,9 +67,18 @@ export default function Video() {
     }, "image/png");
   };
 
+  const handleVideoClick = () => {
+    // Refocus the camera by restarting the stream
+    if (stream) {
+      stream.getTracks().forEach((track) => track.stop());
+      setStream(null);
+      getVideo(); // Restart the video stream to refocus
+    }
+  };
+
   return (
     <div>
-      <video ref={videoRef} autoPlay />
+      <video ref={videoRef} autoPlay onClick={handleVideoClick} />
       <button
         className="w-full p-2 my-2 bg-slate-200 rounded-xl"
         onClick={captureImage}
